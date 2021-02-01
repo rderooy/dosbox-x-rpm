@@ -1,5 +1,5 @@
 Name:          dosbox-x
-Version:       0.83.9
+Version:       0.83.10
 Release:       1%{?dist}
 Summary:       DOS emulator for running DOS games and applications including Windows 3.x/9x
 License:       GPLv2+
@@ -56,7 +56,7 @@ options and features.
 
 %build
 ./autogen.sh
-./configure --enable-core-inline --enable-debug=heavy --prefix=/usr --enable-sdl2
+%configure --enable-core-inline --enable-debug=heavy --enable-sdl2
 %make_build
 
 %install
@@ -76,5 +76,5 @@ if [ -x /usr/sbin/setcap ]; then
 fi
 
 %changelog
-* Sat Jan 23 2021 Robert de Rooy <robert.de.rooy[AT]gmail.com> - 0.89.9-1
+* Sat Jan 23 2021 Robert de Rooy <robert.de.rooy[AT]gmail.com> - 0.89.10-1
 - Initial release
