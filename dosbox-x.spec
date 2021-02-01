@@ -28,7 +28,7 @@ BuildRequires: zlib-devel
 Requires:      fluid-soundfont-gm
 
 # Dynamic recompiler only supports x86 and arm
-ExclusiveArch: %{ix86} %{arm} x86_64 aarch64
+ExclusiveArch: %{ix86} x86_64 aarch64
 
 %description
 DOSBox-X is an open-source DOS emulator for running DOS games and applications.
