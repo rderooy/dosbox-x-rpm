@@ -76,5 +76,5 @@ if [ -x /usr/sbin/setcap ]; then
 fi
 
 %changelog
-* Sat Jan 23 2021 Robert de Rooy <robert.de.rooy[AT]gmail.com> - 0.89.10-1
+* Sat Jan 23 2021 Robert de Rooy <robert.de.rooy[AT]gmail.com> - 0.83.10-1
 - Initial release
