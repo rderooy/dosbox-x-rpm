@@ -1,5 +1,5 @@
 Name:          dosbox-x
-Version:       0.83.10
+Version:       0.83.11
 Release:       1%{?dist}
 Summary:       DOS emulator for running DOS games and applications including Windows 3.x/9x
 License:       GPLv2+
@@ -28,7 +28,7 @@ BuildRequires: zlib-devel
 Requires:      fluid-soundfont-gm
 
 # Dynamic recompiler only supports x86 and arm
-ExclusiveArch: %{ix86} x86_64 aarch64
+#ExclusiveArch: %{ix86} x86_64 aarch64
 
 %description
 DOSBox-X is an open-source DOS emulator for running DOS games and applications.
@@ -76,5 +76,5 @@ if [ -x /usr/sbin/setcap ]; then
 fi
 
 %changelog
-* Sat Jan 23 2021 Robert de Rooy <robert.de.rooy[AT]gmail.com> - 0.83.10-1
-- Initial release
+* Mon Mar 1 2021 Robert de Rooy <robert.de.rooy[AT]gmail.com> - 0.83.11-1
+- Initial Fedora release
