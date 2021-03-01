@@ -27,9 +27,6 @@ BuildRequires: zlib-devel
 
 Requires:      fluid-soundfont-gm
 
-# Dynamic recompiler only supports x86 and arm
-#ExclusiveArch: %{ix86} x86_64 aarch64
-
 %description
 DOSBox-X is an open-source DOS emulator for running DOS games and applications.
 DOS-based Windows such as Windows 3.x and Windows 9x are officially supported.
