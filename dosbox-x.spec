@@ -1,10 +1,11 @@
 Name:          dosbox-x
 Version:       0.83.11
-Release:       1%{?dist}
+Release:       2%{?dist}
 Summary:       DOS emulator for running DOS games and applications including Windows 3.x/9x
 License:       GPLv2+
 URL:           https://dosbox-x.com
 Source:        https://github.com/joncampbell123/dosbox-x/archive/%{name}-v%{version}.tar.gz
+Patch:        s390x-mem.patch
 
 BuildRequires: alsa-lib-devel
 BuildRequires: fluidsynth-devel
@@ -26,8 +27,6 @@ BuildRequires: SDL2_net-devel
 BuildRequires: zlib-devel
 
 Requires:      fluid-soundfont-gm
-
-ExcludeArch:   s390x
 
 %description
 DOSBox-X is an open-source DOS emulator for running DOS games and applications.
@@ -51,7 +50,7 @@ DOSBox-X emulates a legacy IBM PC and DOS environment, and has many emulation
 options and features.
 
 %prep
-%autosetup -n dosbox-x-dosbox-x-v%{version}
+%autosetup -p1 -n dosbox-x-dosbox-x-v%{version}
 
 %build
 ./autogen.sh
@@ -75,5 +74,7 @@ if [ -x /usr/sbin/setcap ]; then
 fi
 
 %changelog
+* Sat Mar 6 2021 Robert de Rooy <robert.de.rooy[AT]gmail.com> - 0.83.11-2
+- Fix s390x build
 * Mon Mar 1 2021 Robert de Rooy <robert.de.rooy[AT]gmail.com> - 0.83.11-1
-- Initial Fedora release
+- Initial release for Fedora
