@@ -1,16 +1,21 @@
 Name:          dosbox-x
 Version:       0.83.11
-Release:       2%{?dist}
+Release:       3%{?dist}
 Summary:       DOS emulator for running DOS games and applications including Windows 3.x/9x
 License:       GPLv2+
 URL:           https://dosbox-x.com
 Source:        https://github.com/joncampbell123/dosbox-x/archive/%{name}-v%{version}.tar.gz
-Patch:        s390x-mem.patch
+
+# Patch to fix s390x build breakage, merged upsteam
+# https://github.com/joncampbell123/dosbox-x/commit/f2d28f34a97c0c35743a11355b747d2b6cc3f99d
+Patch:         s390x-mem.patch
 
 BuildRequires: alsa-lib-devel
+BuildRequires: desktop-file-utils
 BuildRequires: fluidsynth-devel
 BuildRequires: freetype-devel
 BuildRequires: gcc-c++
+BuildRequires: libappstream-glib
 BuildRequires: libpcap-devel
 BuildRequires: libpng-devel
 BuildRequires: libtool
@@ -59,6 +64,8 @@ options and features.
 
 %install
 %make_install
+desktop-file-validate %{buildroot}/%{_datadir}/applications/com.dosbox_x.DOSBox-X.desktop
+appstream-util validate-relax --nonet %{buildroot}%{_metainfodir}/*.metainfo.xml
 
 %files
 %{_bindir}/%{name}
@@ -74,6 +81,9 @@ if [ -x /usr/sbin/setcap ]; then
 fi
 
 %changelog
+* Sun Mar 28 2021 Robert de Rooy <robert.de.rooy[AT]gmail.com> - 0.83.11-3
+- Add .desktop file validation
+- Add .metainfo.xml file validation
 * Sat Mar 6 2021 Robert de Rooy <robert.de.rooy[AT]gmail.com> - 0.83.11-2
 - Fix s390x build
 * Mon Mar 1 2021 Robert de Rooy <robert.de.rooy[AT]gmail.com> - 0.83.11-1
