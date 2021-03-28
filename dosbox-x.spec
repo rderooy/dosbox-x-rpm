@@ -84,7 +84,9 @@ fi
 * Sun Mar 28 2021 Robert de Rooy <robert.de.rooy[AT]gmail.com> - 0.83.11-3
 - Add .desktop file validation
 - Add .metainfo.xml file validation
+
 * Sat Mar 6 2021 Robert de Rooy <robert.de.rooy[AT]gmail.com> - 0.83.11-2
 - Fix s390x build
+
 * Mon Mar 1 2021 Robert de Rooy <robert.de.rooy[AT]gmail.com> - 0.83.11-1
 - Initial release for Fedora
