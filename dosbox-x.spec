@@ -14,6 +14,7 @@ BuildRequires: gcc-c++
 BuildRequires: libappstream-glib
 BuildRequires: libpcap-devel
 BuildRequires: libpng-devel
+BuildRequires: libslirp-devel
 BuildRequires: libtool
 BuildRequires: libX11-devel
 BuildRequires: libXext-devel
