@@ -1,14 +1,10 @@
 Name:          dosbox-x
-Version:       0.83.11
-Release:       3%{?dist}
+Version:       0.83.12
+Release:       1%{?dist}
 Summary:       DOS emulator for running DOS games and applications including Windows 3.x/9x
 License:       GPLv2+
 URL:           https://dosbox-x.com
 Source:        https://github.com/joncampbell123/dosbox-x/archive/%{name}-v%{version}.tar.gz
-
-# Patch to fix s390x build breakage, merged upsteam
-# https://github.com/joncampbell123/dosbox-x/commit/f2d28f34a97c0c35743a11355b747d2b6cc3f99d
-Patch:         s390x-mem.patch
 
 BuildRequires: alsa-lib-devel
 BuildRequires: desktop-file-utils
@@ -32,6 +28,7 @@ BuildRequires: SDL2_net-devel
 BuildRequires: zlib-devel
 
 Requires:      fluid-soundfont-gm
+Requires:      hicolor-icon-theme
 
 %description
 DOSBox-X is an open-source DOS emulator for running DOS games and applications.
@@ -54,6 +51,8 @@ PC-98 games with it.
 DOSBox-X emulates a legacy IBM PC and DOS environment, and has many emulation
 options and features.
 
+%global _hardened_build 1
+
 %prep
 %autosetup -p1 -n dosbox-x-dosbox-x-v%{version}
 
@@ -73,6 +72,7 @@ appstream-util validate-relax --nonet %{buildroot}%{_metainfodir}/*.metainfo.xml
 %{_datadir}/applications/com.dosbox_x.DOSBox-X.desktop
 %{_datadir}/icons/hicolor/scalable/apps/dosbox-x.svg
 %{_datadir}/metainfo/com.dosbox_x.DOSBox-X.metainfo.xml
+%{_mandir}/man1/dosbox-x.1.gz
 
 # Required for NE2000 pcap networking support (promiscuous mode)
 %post
@@ -81,6 +81,9 @@ if [ -x %{_sbindir}/setcap ]; then
 fi
 
 %changelog
+* Sun Apr 4 2021 Robert de Rooy <robert.de.rooy[AT]gmail.com> - 0.83.12-1
+- Bumped to new release
+
 * Sun Mar 28 2021 Robert de Rooy <robert.de.rooy[AT]gmail.com> - 0.83.11-3
 - Add .desktop file validation
 - Add .metainfo.xml file validation
