@@ -1,6 +1,6 @@
 Name:          dosbox-x
 Version:       0.83.12
-Release:       2%{?dist}
+Release:       3%{?dist}
 Summary:       DOS emulator for running DOS games and applications including Windows 3.x/9x
 License:       GPLv2+
 URL:           https://dosbox-x.com
@@ -56,8 +56,6 @@ PC-98 games with it.
 DOSBox-X emulates a legacy IBM PC and DOS environment, and has many emulation
 options and features.
 
-%global _hardened_build 1
-
 %prep
 %autosetup -p1 -n dosbox-x-dosbox-x-v%{version}
 
@@ -78,6 +76,8 @@ appstream-util validate-relax --nonet %{buildroot}%{_metainfodir}/*.metainfo.xml
 %{_datadir}/icons/hicolor/scalable/apps/dosbox-x.svg
 %{_datadir}/metainfo/com.dosbox_x.DOSBox-X.metainfo.xml
 %{_mandir}/man1/dosbox-x.1.gz
+%doc dosbox-x.reference.conf
+%doc dosbox-x.reference.full.conf
 
 # Required for NE2000 pcap networking support (promiscuous mode)
 %post
@@ -86,6 +86,10 @@ if [ -x %{_sbindir}/setcap ]; then
 fi
 
 %changelog
+* Mon Apr 12 2021 Robert de Rooy <robert.de.rooy[AT]gmail.com> - 0.83.12-3
+- Remove hardening, as it is default
+- tag 2 files as doc
+
 * Mon Apr 5 2021 Robert de Rooy <robert.de.rooy[AT]gmail.com> - 0.83.12-2
 - Fix DOS4GW temp file creation
 
