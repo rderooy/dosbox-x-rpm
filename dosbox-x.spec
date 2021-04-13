@@ -1,6 +1,6 @@
 Name:          dosbox-x
 Version:       0.83.12
-Release:       3%{?dist}
+Release:       4%{?dist}
 Summary:       DOS emulator for running DOS games and applications including Windows 3.x/9x
 License:       GPLv2+
 URL:           https://dosbox-x.com
@@ -70,7 +70,7 @@ desktop-file-validate %{buildroot}/%{_datadir}/applications/com.dosbox_x.DOSBox-
 appstream-util validate-relax --nonet %{buildroot}%{_metainfodir}/*.metainfo.xml
 
 %files
-%{_bindir}/%{name}
+%caps(cap_net_raw=ep cap_net_admin=ep) %{_bindir}/%{name}
 %{_datadir}/%{name}
 %{_datadir}/applications/com.dosbox_x.DOSBox-X.desktop
 %{_datadir}/icons/hicolor/scalable/apps/dosbox-x.svg
@@ -80,13 +80,10 @@ appstream-util validate-relax --nonet %{buildroot}%{_metainfodir}/*.metainfo.xml
 %doc dosbox-x.reference.conf
 %doc dosbox-x.reference.full.conf
 
-# Required for NE2000 pcap networking support (promiscuous mode)
-%post
-if [ -x %{_sbindir}/setcap ]; then
-    setcap cap_net_raw+ep %{_bindir}/%{name}
-fi
-
 %changelog
+* Mon Apr 13 2021 Robert de Rooy <robert.de.rooy[AT]gmail.com> - 0.83.12-4
+- use %caps macro
+
 * Mon Apr 12 2021 Robert de Rooy <robert.de.rooy[AT]gmail.com> - 0.83.12-3
 - Remove hardening, as it is default
 - tag 2 files as doc
