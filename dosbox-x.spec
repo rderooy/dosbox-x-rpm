@@ -1,14 +1,14 @@
 Name:          dosbox-x
-Version:       0.83.12
-Release:       4%{?dist}
+Version:       0.83.13
+Release:       1%{?dist}
 Summary:       DOS emulator for running DOS games and applications including Windows 3.x/9x
 License:       GPLv2+
 URL:           https://dosbox-x.com
 Source:        https://github.com/joncampbell123/dosbox-x/archive/%{name}-v%{version}.tar.gz
 
-# Patch to fix DOS4GW temp file creation breakage, merged upstream
-# https://github.com/joncampbell123/dosbox-x/pull/2416/commits/3fd18c38b04d5299dff3d76fc6b9062b5f4f2d14
-Patch:         fix-temp-filenames.patch
+# Patch to fix metainfo
+# Patch submitted upstream https://github.com/joncampbell123/dosbox-x/pull/2491
+Patch:         fix-metainfo.patch
 
 BuildRequires: alsa-lib-devel
 BuildRequires: desktop-file-utils
@@ -81,6 +81,9 @@ appstream-util validate-relax --nonet %{buildroot}%{_metainfodir}/*.metainfo.xml
 %doc dosbox-x.reference.full.conf
 
 %changelog
+* Mon May 1 2021 Robert de Rooy <robert.de.rooy[AT]gmail.com> - 0.83.13-1
+- Bumped to new release
+
 * Mon Apr 13 2021 Robert de Rooy <robert.de.rooy[AT]gmail.com> - 0.83.12-4
 - use %caps macro
 
