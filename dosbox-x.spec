@@ -1,10 +1,10 @@
 Name:          dosbox-x
-Version:       0.83.14
+Version:       0.83.15
 Release:       1%{?dist}
 Summary:       DOS emulator for running DOS games and applications including Windows 3.x/9x
 License:       GPLv2+
 URL:           https://dosbox-x.com
-Source:        https://github.com/joncampbell123/dosbox-x/archive/%{name}-v%{version}.tar.gz
+Source:        https://github.com/joncampbell123/dosbox-x/archive/refs/%{name}-v%{version}.tar.gz
 
 BuildRequires: alsa-lib-devel
 BuildRequires: desktop-file-utils
@@ -77,6 +77,9 @@ appstream-util validate-relax --nonet %{buildroot}%{_metainfodir}/*.metainfo.xml
 %doc dosbox-x.reference.full.conf
 
 %changelog
+* Fri Jul 1 2021 Robert de Rooy <robert.de.rooy[AT]gmail.com> - 0.83.15-1
+- Bumped to new release
+
 * Tue Jun 1 2021 Robert de Rooy <robert.de.rooy[AT]gmail.com> - 0.83.14-1
 - Bumped to new release
 
